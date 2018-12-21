@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_171439) do
+ActiveRecord::Schema.define(version: 2018_12_21_174610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gift_ogp_images", force: :cascade do |t|
+    t.bigint "gift_id"
+    t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gift_id"], name: "index_gift_ogp_images_on_gift_id"
+  end
 
   create_table "gifts", force: :cascade do |t|
     t.string "gift_name"
@@ -27,4 +35,5 @@ ActiveRecord::Schema.define(version: 2018_12_21_171439) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "gift_ogp_images", "gifts"
 end
