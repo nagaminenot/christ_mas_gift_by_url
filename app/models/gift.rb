@@ -16,6 +16,10 @@ class Gift < ApplicationRecord
 
   def update_ogp
     ogp_image_generator = GiftOgpImageGenerator.new(self)
-    ogp_image_generator.generate
+    file_path = ogp_image_generator.generate
+
+    tmp_gift_ogp_image = GiftOgpImage.new(gift: self)
+    tmp_gift_ogp_image.image = File.open(file_path)
+    tmp_gift_ogp_image.save!
   end
 end

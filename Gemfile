@@ -36,6 +36,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # サーバサイド画像編集のため
 gem 'rmagick'
+# メタタグ設定のため
+gem 'meta-tags'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

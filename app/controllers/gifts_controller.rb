@@ -10,6 +10,8 @@ class GiftsController < ApplicationController
   # GET /gifts/1
   # GET /gifts/1.json
   def show
+    gift = Gift.find(params[:id])
+    prepare_meta_tags(og: {image: "#{Rails.root.join('tmp', 'ogp_image')}/#{gift.slug}.png"})
   end
 
   # GET /gifts/new
