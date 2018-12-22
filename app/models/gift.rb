@@ -7,6 +7,8 @@ class Gift < ApplicationRecord
   validates :taker_name, presence: true
   validates :gift_url, presence: true
   validates :slug, uniqueness: true
+  include FriendlyId
+  friendly_id :slug
 
   def set_slug
     if self.slug.present?

@@ -3,16 +3,20 @@ class GiftsController < ApplicationController
 
   # GET /gifts
   # GET /gifts.json
-  def index
-    @gifts = Gift.all
-  end
+  # def index
+  #   @gifts = Gift.all
+  # end
 
   # GET /gifts/1
   # GET /gifts/1.json
   def show
-    gift = Gift.find(params[:id])
+    gift = Gift.friendly.find(params[:id])
     prepare_meta_tags(og: {image: "#{request.protocol}#{request.domain(2)}/uploads/gift_ogp_image/image/#{gift.slug}.png"})
     prepare_meta_tags(og: {title: "#{gift.taker_name}さんへだけの、特別なプレゼントが届きました"})
+  end
+
+  def complete
+    @gift = Gift.friendly.find(params[:id])
   end
 
   # GET /gifts/new
@@ -31,8 +35,8 @@ class GiftsController < ApplicationController
 
     respond_to do |format|
       if @gift.save
-        format.html { redirect_to @gift, notice: 'Gift was successfully created.' }
-        format.json { render :show, status: :created, location: @gift }
+        format.html { redirect_to :action => "complete", :id => @gift.slug, notice: 'Gift was successfully created.' }
+        format.json { render :complete, status: :created, location: @gift }
       else
         format.html { render :new }
         format.json { render json: @gift.errors, status: :unprocessable_entity }
@@ -67,7 +71,7 @@ class GiftsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gift
-      @gift = Gift.find(params[:id])
+      @gift = Gift.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
