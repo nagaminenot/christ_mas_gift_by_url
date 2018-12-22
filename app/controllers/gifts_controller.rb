@@ -49,7 +49,7 @@ class GiftsController < ApplicationController
   def update
     respond_to do |format|
       if @gift.update(gift_params)
-        format.html { redirect_to @gift, notice: 'Gift was successfully updated.' }
+        format.html { redirect_to :action => "complete", :id => @gift.slug, notice: 'Gift was successfully  updated.' }
         format.json { render :show, status: :ok, location: @gift }
       else
         format.html { render :edit }
@@ -76,6 +76,6 @@ class GiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gift_params
-      params.require(:gift).permit(:gift_name, :giver_name, :taker_name, :gift_url, :image_url, :message, :slug)
+      params.require(:gift).permit(:giver_name, :taker_name, :gift_url, :slug)
     end
 end
