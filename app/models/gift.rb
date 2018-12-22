@@ -6,6 +6,7 @@ class Gift < ApplicationRecord
   validates :giver_name, presence: true
   validates :taker_name, presence: true
   validates :gift_url, presence: true
+  validates :message, presence: true
   validates :slug, uniqueness: true
   include FriendlyId
   friendly_id :slug
