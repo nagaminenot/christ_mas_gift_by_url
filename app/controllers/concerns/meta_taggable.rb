@@ -27,12 +27,12 @@ module MetaTaggable
         title: title,
         description: description,
         site_name: site,
-        type: 'article',
+        type: 'website',
         image: image
       },
       twitter: {
-        card: 'summary',
-        site: '@simpliejp',
+        card: 'summary_large_image',
+        site: '@nagaminenot',
         title: title.presence || site,
         description: description,
         image: image
