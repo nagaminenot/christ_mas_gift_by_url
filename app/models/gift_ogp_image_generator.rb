@@ -35,14 +35,14 @@ class GiftOgpImageGenerator
 
     # 文字の書き込み
     if taker_name.present? && giver_name.present?
-      draw.pointsize = 60
-      draw.annotate(image, 0, 0, 180, 150, "#{taker_name}さんへ" ) {
+      draw.pointsize = 50
+      draw.annotate(image, 0, 0, 280, 150, "#{taker_name}さんへ" ) {
         self.fill = '#fff'
       }
-      draw.annotate(image, 0, 0, 180, 280, "#{giver_name}さんから" ) {
+      draw.annotate(image, 0, 0, 280, 280, "#{giver_name}さんから" ) {
         self.fill = '#fff'
       }
-      draw.annotate(image, 0, 0, 180, 410, "X'masプレゼントが届いてます！" ) {
+      draw.annotate(image, 0, 0, 280, 410, "X'masプレゼントが届いてます！" ) {
         self.fill = '#fff'
       }
     end

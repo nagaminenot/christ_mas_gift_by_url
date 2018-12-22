@@ -11,18 +11,21 @@ class GiftsController < ApplicationController
   # GET /gifts/1.json
   def show
     gift = Gift.friendly.find(params[:id])
+    desc = "#{gift.giver_name}さんからメッセージ付きのプレゼントです"
+    title = "#{gift.taker_name}さんへだけの、特別なプレゼントが届きました"
+    img = "#{request.protocol}#{request.domain(2)}/uploads/gift_ogp_image/image/#{gift.slug}.png"
     prepare_meta_tags({
-      title: "#{gift.taker_name}さんへだけの、特別なプレゼントが届きました",
-      description: "#{gift.giver_name}さんからメッセージ付きのプレゼント",
+      title: title,
+      description: desc,
       og: {
-        image: "#{request.protocol}#{request.domain(2)}/uploads/gift_ogp_image/image/#{gift.slug}.png",
-        title: "#{gift.taker_name}さんへだけの、特別なプレゼントが届きました",
-        description: "#{gift.giver_name}さんからメッセージ付きのプレゼント"
+        image: img,
+        title: title,
+        description: desc
       },
       twitter: {
-        title: "#{gift.taker_name}さんへだけの、特別なプレゼントが届きました",
-        description: "#{gift.giver_name}さんからメッセージ付きのプレゼント",
-        image: "#{request.protocol}#{request.domain(2)}/uploads/gift_ogp_image/image/#{gift.slug}.png",
+        title: title,
+        description: desc,
+        image: img,
       }
     })
   end
