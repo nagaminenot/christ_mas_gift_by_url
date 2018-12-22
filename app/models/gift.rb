@@ -1,5 +1,6 @@
 class Gift < ApplicationRecord
   require "securerandom"
+  has_one :gift_ogp_image, dependent: :destroy
   before_save :set_slug
   after_save :update_ogp
   validates :giver_name, presence: true
@@ -18,8 +19,8 @@ class Gift < ApplicationRecord
     ogp_image_generator = GiftOgpImageGenerator.new(self)
     file_path = ogp_image_generator.generate
 
-    tmp_gift_ogp_image = GiftOgpImage.new(gift: self)
+    tmp_gift_ogp_image = gift_ogp_image.present? ? gift_ogp_image : GiftOgpImage.new(gift: self)
     tmp_gift_ogp_image.image = File.open(file_path)
-    tmp_gift_ogp_image.save!
+    saved_item = tmp_gift_ogp_image.save!
   end
 end

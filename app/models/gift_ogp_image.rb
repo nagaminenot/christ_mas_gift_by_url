@@ -1,4 +1,4 @@
-class UserOgpImage < ApplicationRecord
+class GiftOgpImage < ApplicationRecord
   belongs_to :gift
 
   mount_uploader :image, GiftOgpImageUploader
