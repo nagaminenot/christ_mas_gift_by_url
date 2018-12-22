@@ -5,6 +5,7 @@ class Gift < ApplicationRecord
   after_save :update_ogp
   validates :giver_name, presence: true
   validates :taker_name, presence: true
+  validates :gift_url, presence: true
   validates :slug, uniqueness: true
 
   def set_slug

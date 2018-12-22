@@ -37,3 +37,10 @@
 
 <%= link_to 'Edit', edit_gift_path(@gift) %> |
 <%= link_to 'Back', gifts_path %>
+
+<script>
+setTimeout("redirect()", 5);
+function redirect(){
+    location.href='<%= @gift.gift_url %>';
+}
+</script>
