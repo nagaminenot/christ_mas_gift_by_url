@@ -1,46 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h2>開封中…</h2>
 
-<p>
-  <strong>Gift name:</strong>
-  <%= @gift.gift_name %>
-</p>
+<p><%= @gift.giver_name %>さんから
+<%= @gift.taker_name %>さんへの
+クリスマスプレゼントです。</p>
 
-<p>
-  <strong>Giver name:</strong>
-  <%= @gift.giver_name %>
-</p>
-
-<p>
-  <strong>Taker name:</strong>
-  <%= @gift.taker_name %>
-</p>
-
-<p>
-  <strong>Gift url:</strong>
-  <%= @gift.gift_url %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @gift.image_url %>
-</p>
-
-<p>
-  <strong>Message:</strong>
-  <%= @gift.message %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @gift.slug %>
-</p>
-
-<%= link_to 'Edit', edit_gift_path(@gift) %> |
-<%= link_to 'Back', gifts_path %>
+<p>お受け取りください！</p>
 
 <script>
-setTimeout("redirect()", 5);
+setTimeout("redirect()", 4000);
 function redirect(){
-    location.href='<%= @gift.gift_url %>';
+  location.href='<%= @gift.gift_url %>';
 }
 </script>
