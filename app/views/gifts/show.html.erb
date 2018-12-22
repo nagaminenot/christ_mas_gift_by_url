@@ -1,4 +1,4 @@
-<h2>開封中…</h2>
+<h2>開封中…（10秒後に開きます）</h2>
 
 <p><%= @gift.giver_name %>さんより<br>
 クリスマスプレゼントです</p>
@@ -8,7 +8,7 @@
 <p>お受け取りください！</p>
 
 <script>
-setTimeout("redirect()", 4000);
+setTimeout("redirect()", 10000);
 function redirect(){
   location.href='<%= @gift.gift_url %>';
 }
