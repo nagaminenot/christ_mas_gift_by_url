@@ -11,7 +11,7 @@ class GiftsController < ApplicationController
   # GET /gifts/1.json
   def show
     gift = Gift.find(params[:id])
-    prepare_meta_tags(og: {image: "#{request.domain == 'localhost' ? 'localhost:3000' : request.domain}/uploads/gift_ogp_image/image/#{gift.slug}.png"})
+    prepare_meta_tags(og: {image: "#{request.domain(2)}/uploads/gift_ogp_image/image/#{gift.slug}.png"})
   end
 
   # GET /gifts/new
